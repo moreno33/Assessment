@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         edxFirstName.getText().toString(), edxLastName.getText().toString(), null);
                 mainViewModel.addUser(user);
                 mainViewModel.getUserList(1);
-                Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
             }).setView(v)
             .setNegativeButton(R.string.str_cancel, (dialogInterface, i) -> {
                 dialogInterface.dismiss();
