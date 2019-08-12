@@ -12,7 +12,7 @@ public class MyApp extends Application {
 
     private static MyApp INSTANCE;
     private Retrofit retrofit;
-    private final static String BASE_URL= 
+    private final static String BASE_URL= "https://reqres.in";
 
     @Override
     public void onCreate() {
