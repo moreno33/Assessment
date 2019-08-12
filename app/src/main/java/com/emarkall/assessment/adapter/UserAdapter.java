@@ -64,7 +64,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.CustomVH> {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void addAll(List<User> users) {
+        this.users.addAll(users);
     }
 }

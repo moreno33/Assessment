@@ -13,7 +13,7 @@ public class UserDto {
     private int total;
     @SerializedName("total_pages")
     private int totalPages;
-
+    @SerializedName("data")
     private List<User> users;
 
     public int getPage() {
