@@ -3,6 +3,7 @@ package com.emarkall.assessment.activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.service.autofill.UserData;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -77,26 +78,32 @@ public class MainActivity extends AppCompatActivity {
         //Add button
         fltAdd= findViewById(R.id.fltAdd);
         fltAdd.setOnClickListener(view -> {
-            View v= LayoutInflater.from(MainActivity.this).inflate(R.layout.add_user_layout, null);
 
+
+
+
+
+            AlertDialog.Builder builder= new AlertDialog.Builder(this);
+            View v= getLayoutInflater().inflate(R.layout.add_user_layout, null);
             EditText edxFirstName= v.findViewById(R.id.edxFirstName);
             EditText edxLastName= v.findViewById(R.id.edxLastName);
             EditText edxEmail= v.findViewById(R.id.edxEmail);
 
-            AlertDialog diallog= new AlertDialog.Builder(this)
-                    .setCancelable(false)
-                    .setView(view)
-                    .setPositiveButton(R.string.str_save, (dialogInterface, i) -> {
-                        User user= new User(null, edxEmail.getText().toString(),
-                                edxFirstName.getText().toString(), edxLastName.getText().toString(), null);
-                        mainViewModel.addUser(user);
-                        mainViewModel.getUserList(1);
-                    })
-                    .setNegativeButton(R.string.str_cancel, (dialogInterface, i) -> {
-
-                    })
-                    .create();
+            builder.setPositiveButton(R.string.str_save, (dialogInterface, i) -> {
+                User user= new User(null, edxEmail.getText().toString(),
+                        edxFirstName.getText().toString(), edxLastName.getText().toString(), null);
+                mainViewModel.addUser(user);
+                mainViewModel.getUserList(1);
+                Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+            }).setView(v)
+            .setNegativeButton(R.string.str_cancel, (dialogInterface, i) -> {
+                dialogInterface.dismiss();
+            })
+            .create().show();
         });
+
+
+
 
 
     }

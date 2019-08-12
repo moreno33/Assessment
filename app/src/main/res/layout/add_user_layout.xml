@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
     android:orientation="vertical">
 
     <EditText
@@ -12,7 +11,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/str_first_name"
-        android:layout_marginBottom="10dp"/>
+        android:layout_margin="15dp"/>
 
     <EditText
         android:id="@+id/edxLastName"
@@ -21,7 +20,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/str_last_name"
-        android:layout_marginBottom="10dp"/>
+        android:layout_margin="15dp"/>
 
     <EditText
         android:id="@+id/edxEmail"
@@ -30,5 +29,6 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/str_email"
-        android:layout_marginBottom="10dp"/>
+        android:layout_margin="15dp"
+        />
 </LinearLayout>
