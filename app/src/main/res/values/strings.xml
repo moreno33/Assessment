@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Assessment</string>
+    <string name="str_first_name">First name</string>
+    <string name="str_last_name">Last Name</string>
+    <string name="str_email">Email</string>
+    <string name="str_save">Save</string>
+    <string name="str_cancel">Cancel</string>
 </resources>

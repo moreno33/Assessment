@@ -47,4 +47,8 @@ public class MainViewModel extends ViewModel {
         });
         return userLiveData;
     }
+
+    public void addUser(User user){
+        userApi.addUser(user);
+    }
 }

@@ -1,12 +1,17 @@
 package com.emarkall.assessment.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.service.autofill.UserData;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +22,7 @@ import com.emarkall.assessment.adapter.UserAdapter;
 import com.emarkall.assessment.domain.User;
 import com.emarkall.assessment.domain.dto.UserDto;
 import com.emarkall.assessment.viewModel.MainViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -25,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private UserAdapter adapter;
     private MainViewModel mainViewModel;
+    private FloatingActionButton fltAdd;
 
     private  int TOTAL_PAGES= 0;
     private int current= 0;
@@ -58,12 +65,39 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if(current>TOTAL_PAGES){
+                if(current<TOTAL_PAGES){
                     current++;
+                    mainViewModel.getUserList(current);
                 }
-                mainViewModel.getUserList(current);
+
             }
         });
+
+
+        //Add button
+        fltAdd= findViewById(R.id.fltAdd);
+        fltAdd.setOnClickListener(view -> {
+            View v= LayoutInflater.from(MainActivity.this).inflate(R.layout.add_user_layout, null);
+
+            EditText edxFirstName= v.findViewById(R.id.edxFirstName);
+            EditText edxLastName= v.findViewById(R.id.edxLastName);
+            EditText edxEmail= v.findViewById(R.id.edxEmail);
+
+            AlertDialog diallog= new AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setView(view)
+                    .setPositiveButton(R.string.str_save, (dialogInterface, i) -> {
+                        User user= new User(null, edxEmail.getText().toString(),
+                                edxFirstName.getText().toString(), edxLastName.getText().toString(), null);
+                        mainViewModel.addUser(user);
+                        mainViewModel.getUserList(1);
+                    })
+                    .setNegativeButton(R.string.str_cancel, (dialogInterface, i) -> {
+
+                    })
+                    .create();
+        });
+
 
     }
 
