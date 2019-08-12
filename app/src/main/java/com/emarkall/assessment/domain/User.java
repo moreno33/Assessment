@@ -3,11 +3,19 @@ package com.emarkall.assessment.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User implements Parcelable {
 
     private Long id;
 
-    private String email, firstName, lastName, avatarUrl;
+    private String email;
+    @SerializedName("first_name")
+    private String firstName;
+    @SerializedName("last_name")
+    private String lastName;
+    @SerializedName("avatar")
+    private String avatarUrl;
 
     //Default constructor
     public User(){}

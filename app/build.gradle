@@ -41,6 +41,9 @@ dependencies {
     //Facebook shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
 
+    //The Model mapper
+    implementation 'org.modelmapper:modelmapper:2.3.0'
+
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
